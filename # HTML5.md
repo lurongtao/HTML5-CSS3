@@ -750,7 +750,211 @@ ctx.fillRect(0,0,80,100);
 
 ## embed
 
+### 一、基本语法
+```
+embed src = url
+```
+说明：embed可以用来插入各种多媒体，格式可以是 Midi、Wav、AIFF、AU、MP3等等，Netscape及新版的IE 都支持。url为音频或视频文件及其路径，可以是相对路径或绝对路径。
+```
+<embed src="your.mid">
+```
+### 二、属性设置
+#### 1、自动播放
+语法：autostart=true、false
+说明：该属性规定音频或视频文件是否在下载完之后就自动播放。
+true：音乐文件在下载完之后自动播放；
+false：音乐文件在下载完之后不自动播放。
+
+示例：
+```
+<embed src="your.mid" autostart=true>
+<embed src="your.mid" autostart=false>
+```
+#### 2、循环播放
+语法：loop=正整数、true、false
+说明：该属性规定音频或视频文件是否循环及循环次数。
+属性值为正整数值时，音频或视频文件的循环次数与正整数值相同；
+属性值为true时，音频或视频文件循环；
+属性值为false时，音频或视频文件不循环。
+
+示例：
+```
+<embed src="your.mid" autostart=true loop=2>
+<embed src="your.mid" autostart=true loop=true>
+<embed src="your.mid" autostart=true loop=false>
+```
+#### 3、面板显示
+语法：hidden=ture、no
+说明：该属性规定控制面板是否显示，默认值为no。
+ture：隐藏面板；
+no：显示面板。
+
+示例：
+``` 
+<embed src="your.mid" hidden=ture>
+<embed src="your.mid" hidden=no>
+```
+#### 4、开始时间
+语法：starttime=mm:ss（分：秒）
+说明：该属性规定音频或视频文件开始播放的时间。未定义则从文件开头播放。
+
+示例：
+```
+<embed src="your.mid" starttime="00:10">
+```
+#### 5、音量大小
+语法：volume=0-100之间的整数
+说明：该属性规定音频或视频文件的音量大小。未定义则使用系统本身的设定。
+
+示例：
+```
+<embed src="your.mid" volume="10">
+```
+#### 6、容器属性
+语法：height=# width=#
+说明：取值为正整数或百分数，单位为像素。该属性规定控制面板的高度和宽度。
+
+height：控制面板的高度；
+width：控制面板的宽度。
+
+示例：
+```
+<embed src="your.mid" height=200 width=200>
+```
+#### 7、容器单位
+语法：units=pixels、en
+说明：该属性指定高和宽的单位为pixels或en。
+
+示例：
+```
+<embed src="your.mid" units="pixels" height=200 width=200>
+<embed src="your.mid" units="en" height=200 width=200>
+```
+#### 8、外观设置
+语法：controls=console、smallconsole、playbutton、pausebutton、stopbutton、volumelever 说明：该属性规定控制面板的外观。默认值是console。
+console：一般正常面板；
+smallconsole：较小的面板；
+playbutton：只显示播放按钮；
+pausebutton：只显示暂停按钮；
+stopbutton：只显示停止按钮；
+volumelever：只显示音量调节按钮。
+
+示例：
+```
+<embed src="your.mid" controls=smallconsole>
+<embed src="your.mid" controls=volumelever>
+```
+#### 9、对象名称
+语法：name=#
+说明：#为对象的名称。该属性给对象取名，以便其他对象利用。
+
+示例：
+```
+<embed src="your.mid" name="video">
+```
+#### 10、说明文字
+语法：title=#
+说明：#为说明的文字。该属性规定音频或视频文件的说明文字。
+
+示例：
+```
+<embed src="your.mid" title="第一首歌">
+```
+#### 11、前景色和背景色
+语法：palette=color|color
+说明：该属性表示嵌入的音频或视频文件的前景色和背景色，第一个值为前景色，第二个值为背景色，中间用 | 隔开。color可以是RGB色（RRGGBB）也可以是颜色名，还可以是transparent （透明）。
+
+示例：
+```
+<embed src="your.mid" palette="red|black">
+```
+#### 12、对齐方式
+语法：align=top、bottom、center、baseline、 left、right、texttop、middle、absmiddle、absbottom
+说明：该属性规定控制面板和当前行中的对象的对齐方式。
+
+center：控制面板居中；
+left：控制面板居左；
+right：控制面板居右；
+top：控制面板的顶部与当前行中的最高对象的顶部对齐；
+bottom：控制面板的底部与当前行中的对象的基线对齐；
+baseline：控制面板的底部与文本的基线对齐；
+texttop：控制面板的顶部与当前行中的最高的文字顶部对齐；
+middle：控制面板的中间与当前行的基线对齐；
+absmiddle：控制面板的中间与当前文本或对象的中间对齐；
+absbottom：控制面板的底部与文字的底部对齐。
+
+示例：
+```
+<embed src="your.mid" align=top>
+<embed src="your.mid" align=center>
+```
 ## video
+
+### 1、 定义和用法
+`<video>` 标签定义视频，比如电影片段或其他视频流。
+```
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    您的浏览器不支持 video 标签。
+</video>
+```
+### 2、标签定义及使用说明
+目前，<video> 元素支持三种视频格式：MP4、WebM、Ogg。
+
+| 浏览器            | MP4                                                     | WebM | Ogg  |
+| :---------------- | :------------------------------------------------------ | :--- | :--- |
+| Internet Explorer | YES                                                     | NO   | NO   |
+| Chrome            | YES                                                     | YES  | YES  |
+| Firefox           | YES 从 Firefox 21 版本开始 Linux 系统从 Firefox 30 开始 | YES  | YES  |
+| Safari            | YES                                                     | NO   | NO   |
+| Opera             | YES 从 Opera 25 版本开始                                | YES  | YES  |
+
+- MP4 = MPEG 4文件使用 H264 视频编解码器和AAC音频编解码器
+
+- WebM = WebM 文件使用 VP8 视频编解码器和 Vorbis 音频编解码器
+
+- Ogg = Ogg 文件使用 Theora 视频编解码器和 Vorbis音频编解码器
+### 3、属性
+
+| 属性                                                         | 值       | 描述                                                         |
+| :----------------------------------------------------------- | :------- | :----------------------------------------------------------- |
+| autoplay | autoplay | 如果出现该属性，则视频在就绪后马上播放。                     |
+| controls | controls | 如果出现该属性，则向用户显示控件，比如播放按钮。             |
+| height | *pixels* | 设置视频播放器的高度。                                       |
+| loop  | loop     | 如果出现该属性，则当媒介文件完成播放后再次开始播放。         |
+| muted | muted    | 规定视频的音频输出应该被静音。                               |
+| poster | *URL*    | 规定视频下载时显示的图像，或者在用户点击播放按钮前显示的图像。 |
+| preload | preload  | 如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。 |
+| src | *url*    | 要播放的视频的 URL。                                         |
+| width | *pixels* | 设置视频播放器的宽度。                                       |
+
+### 4、使用DOM控制
+HTML5 <video> 元素同样拥有方法、属性和事件。
+
+其中的方法用于播放、暂停以及加载等。其中的属性（比如时长、音量等）可以被读取或设置。其中的 DOM 事件能够通知您，比方说，<video> 元素开始播放、已暂停，已停止，等等。
+
+| 方法        | 属性        | 事件           |
+| :---------- | :---------- | :------------- |
+| play()      | currentSrc  | play           |
+| pause()     | currentTime | pause          |
+| load()      | videoWidth  | progress       |
+| canPlayType | videoHeight | error          |
+|             | duration    | timeupdate     |
+|             | ended       | ended          |
+|             | error       | abort          |
+|             | paused      | empty          |
+|             | muted       | emptied        |
+|             | seeking     | waiting        |
+|             | volume      | loadedmetadata |
+|             | height      |                |
+|             | width       |                |
+
+**注释：**在所有属性中，只有 videoWidth 和 videoHeight 属性是立即可用的。在视频的元数据已加载后，其他属性才可用。
+
+### 5、案例
+
+
 
 ## audio
 
